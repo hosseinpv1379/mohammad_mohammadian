@@ -2,15 +2,15 @@
 
 [![CI](https://github.com/hosseinpv1379/mohammad_mohammadian/actions/workflows/ci.yml/badge.svg)](https://github.com/hosseinpv1379/mohammad_mohammadian/actions/workflows/ci.yml)
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/hosseinpv1379/mohammad_mohammadian/master/docs/screenshots/dashboard.png" alt="داشبورد سامانه ثبت‌نام دانشگاه" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/hosseinpv1379/mohammad_mohammadian/master/docs/screenshots/add-course.png" alt="فرم افزودن درس جدید" width="100%" />
+</p>
+
 پروژه آزمایشگاه مهندسی نرم‌افزار — REST API ساده برای مدیریت دروس دانشگاه با ذخیره‌سازی در حافظه (بدون دیتابیس).
-
-## پیش‌نمایش
-
-### داشبورد مدیریت دروس
-![داشبورد سامانه ثبت‌نام](docs/screenshots/dashboard.png)
-
-### افزودن درس جدید
-![فرم افزودن درس](docs/screenshots/add-course.png)
 
 ## زبان و فناوری‌ها
 
