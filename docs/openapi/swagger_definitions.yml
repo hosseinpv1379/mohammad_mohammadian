@@ -1,0 +1,44 @@
+swagger: "2.0"
+info:
+  title: University Registration API
+  description: REST API for the Software Engineering Lab project.
+  version: "1.0.0"
+definitions:
+  CourseCreateRequest:
+    type: object
+    required:
+      - id
+      - code
+      - title
+      - capacity
+    properties:
+      id:
+        type: string
+        example: cse101
+      code:
+        type: string
+        example: CSE-101
+      title:
+        type: string
+        example: Introduction to Software Engineering
+      capacity:
+        type: integer
+        example: 40
+      professor_id:
+        type: string
+        example: prof-ali
+  CourseResponse:
+    type: object
+    properties:
+      id:
+        type: string
+      code:
+        type: string
+      title:
+        type: string
+      capacity:
+        type: integer
+      professor_id:
+        type: string
+      enrollment_count:
+        type: integer

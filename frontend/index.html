@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سامانه ثبت‌نام دانشگاه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header__brand">
+        <div class="header__logo">🎓</div>
+        <div>
+          <h1>سامانه ثبت‌نام دانشگاه</h1>
+          <p>مدیریت دروس — پروژه آزمایشگاه مهندسی نرم‌افزار</p>
+        </div>
+      </div>
+      <div class="header__actions">
+        <span id="api-status" class="badge badge--loading">در حال اتصال...</span>
+        <button id="btn-refresh" class="btn btn--ghost" type="button">بروزرسانی</button>
+        <button id="btn-add" class="btn btn--primary" type="button">+ افزودن درس</button>
+      </div>
+    </header>
+
+    <section class="stats" id="stats">
+      <article class="stat-card">
+        <span class="stat-card__label">تعداد دروس</span>
+        <strong class="stat-card__value" id="stat-total">—</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-card__label">مجموع ظرفیت</span>
+        <strong class="stat-card__value" id="stat-capacity">—</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-card__label">ثبت‌نام‌شده</span>
+        <strong class="stat-card__value" id="stat-enrolled">—</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-card__label">ظرفیت خالی</span>
+        <strong class="stat-card__value" id="stat-available">—</strong>
+      </article>
+    </section>
+
+    <main class="layout">
+      <section class="panel panel--list">
+        <div class="panel__head">
+          <h2>فهرست دروس</h2>
+          <input id="search" class="input input--search" type="search" placeholder="جستجو بر اساس کد یا عنوان..." />
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>کد درس</th>
+                <th>عنوان</th>
+                <th>ظرفیت</th>
+                <th>ثبت‌نام</th>
+                <th>وضعیت</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="courses-body">
+              <tr><td colspan="6" class="empty">در حال بارگذاری...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <aside class="panel panel--detail" id="detail-panel">
+        <div class="panel__head">
+          <h2>جزئیات درس</h2>
+        </div>
+        <div id="detail-content" class="detail detail--empty">
+          <div class="detail__placeholder">
+            <span>📋</span>
+            <p>یک درس از جدول انتخاب کنید تا جزئیات نمایش داده شود.</p>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <dialog id="add-modal" class="modal">
+    <form id="add-form" class="modal__content" method="dialog">
+      <div class="modal__head">
+        <h3>افزودن درس جدید</h3>
+        <button type="button" class="icon-btn" id="btn-close-modal" aria-label="بستن">✕</button>
+      </div>
+      <div class="form-grid">
+        <label>
+          شناسه درس
+          <input class="input" name="id" required placeholder="مثال: cse101" />
+        </label>
+        <label>
+          کد درس
+          <input class="input" name="code" required placeholder="مثال: CSE-101" />
+        </label>
+        <label class="full">
+          عنوان درس
+          <input class="input" name="title" required placeholder="مثال: آزمایشگاه مهندسی نرم‌افزار" />
+        </label>
+        <label>
+          ظرفیت
+          <input class="input" name="capacity" type="number" min="1" required placeholder="40" />
+        </label>
+        <label>
+          شناسه استاد (اختیاری)
+          <input class="input" name="professor_id" placeholder="مثال: prof-ali" />
+        </label>
+      </div>
+      <p id="form-error" class="form-error" hidden></p>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--ghost" id="btn-cancel">انصراف</button>
+        <button type="submit" class="btn btn--primary">ذخیره درس</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

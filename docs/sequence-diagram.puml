@@ -1,0 +1,34 @@
+@startuml StudentEnrollmentSequence
+
+actor Student as student
+participant "RegistrationController" as controller
+participant "EnrollmentService" as service
+participant "CourseRepository" as repo
+
+student -> controller : POST /enrollments {studentId, courseId}
+activate controller
+
+controller -> service : enroll(studentId, courseId)
+activate service
+
+service -> repo : findCourse(courseId)
+activate repo
+repo --> service : course
+deactivate repo
+
+alt course is full
+  service --> controller : EnrollmentError("capacity exceeded")
+  controller --> student : 409 Conflict
+else course has available seats
+  service -> repo : saveEnrollment(enrollment)
+  activate repo
+  repo --> service : enrollment
+  deactivate repo
+  service --> controller : enrollment
+  controller --> student : 201 Created
+end
+
+deactivate service
+deactivate controller
+
+@enduml

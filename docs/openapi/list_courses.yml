@@ -1,0 +1,11 @@
+tags:
+  - courses
+summary: List all courses
+description: Returns every course currently stored in memory.
+responses:
+  200:
+    description: Successful response
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/CourseResponse'

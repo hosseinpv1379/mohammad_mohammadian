@@ -1,0 +1,19 @@
+tags:
+  - courses
+summary: Add a new course
+description: Creates a new course record. Returns 409 if the id already exists.
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      $ref: '#/definitions/CourseCreateRequest'
+responses:
+  201:
+    description: Course created
+    schema:
+      $ref: '#/definitions/CourseResponse'
+  400:
+    description: Invalid payload
+  409:
+    description: Duplicate course id

@@ -1,0 +1,48 @@
+@startuml UniversityRegistrationClassDiagram
+
+skinparam classAttributeIconSize 0
+
+class Student {
+  +id: String
+  +fullName: String
+  +studentNumber: String
+  +major: String
+  +scholarship: Boolean
+  +enroll(course: Course): Enrollment
+}
+
+class Course {
+  +id: String
+  +code: String
+  +title: String
+  +capacity: int
+  +isFull(): Boolean
+  +addEnrollment(enrollment: Enrollment): void
+}
+
+class Professor {
+  +id: String
+  +fullName: String
+  +department: String
+  +assignCourse(course: Course): void
+}
+
+class Enrollment {
+  +id: String
+  +status: String
+  +tuitionWaived: Boolean
+  +enrolledAt: DateTime
+  +confirm(): void
+  +cancel(): void
+}
+
+' Composition: Enrollment cannot exist without Student
+Student "1" *-- "0..*" Enrollment : owns
+
+' Aggregation: Course groups enrollments but they have independent lifecycle
+Course "1" o-- "0..*" Enrollment : contains
+
+' Association: Professor teaches Course; both exist independently
+Professor "1" -- "0..*" Course : teaches
+
+@enduml

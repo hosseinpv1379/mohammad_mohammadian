@@ -1,0 +1,17 @@
+tags:
+  - courses
+summary: Get course by id
+description: Returns a single course. Returns 404 when the id is unknown.
+parameters:
+  - in: path
+    name: course_id
+    type: string
+    required: true
+    description: Unique course identifier
+responses:
+  200:
+    description: Successful response
+    schema:
+      $ref: '#/definitions/CourseResponse'
+  404:
+    description: Course not found
